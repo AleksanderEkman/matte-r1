@@ -18,16 +18,17 @@ print(temperature_list)
 
 new_temp_list = []
 new_time_list = []
+new_skydekke_list = []
 
-for i, temp in enumerate(temperature_list):
-    if not (math.isnan(temp) or temp == "nan" or (temp != temp)):
+for time, temp, sky in zip(time_list, temperature_list, skydekke_list):
+    if temp == temp and sky == sky: # if temp and skydekke != nan
         new_temp_list.append(temp)
-        new_time_list.append(temp)
+        new_time_list.append(time)
+        new_skydekke_list.append(sky)
 
-print("New Time List:")
+print("Time List:")
 print(new_time_list)
-
-print("New Temperature List:")
+print("Temperature List:")
 print(new_temp_list)
 print('Skydekke List:')
-print(skydekke_list)
+print(new_skydekke_list)
