@@ -45,10 +45,25 @@ print(new_måned_list)
 print(len(new_temp_list))
 print(len(new_dag_list))
 
+print("Temp")
 
 for i, temp in enumerate(new_temp_list):
     if i > 150 and i < 225:
         print(temp)
+
+print("Dag")
+
+for i, dag in enumerate(new_dag_list):
+    if i > 150 and i < 225:
+        print(dag)
+
+print("Skydekke")
+
+for i, sky in enumerate(new_skydekke_list):
+    if i > 150 and i < 225:
+        print(sky)
+
+
 
 dager = []
 for i in range(len(new_temp_list)):
