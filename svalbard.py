@@ -1,6 +1,8 @@
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
+import numpy as np
+import pylab
 
 xl_file = pd.ExcelFile("Data.xlsx")
 dfs = xl_file.parse('Sheet1')
@@ -42,3 +44,21 @@ print(new_måned_list)
 
 print(len(new_temp_list))
 print(len(new_dag_list))
+
+dager = []
+for i in range(len(new_temp_list)):
+    dager.append(i+1)
+
+k = 15
+glidende_avg = []
+for i in range(k, len(new_temp_list)-k):
+    glidende_avg.append(pylab.mean(new_temp_list[(i-k):(i+k)]))
+
+xpoints = np.array(dager)
+ypoints = np.array(new_temp_list)
+
+glidende_avg_x = xpoints[k:len(new_temp_list) - k]
+
+plt.plot(ypoints)
+plt.plot(glidende_avg_x, glidende_avg, "k")
+plt.show()
