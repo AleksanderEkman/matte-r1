@@ -53,6 +53,11 @@ print(new_måned_list)
 print(len(new_temp_list))
 print(len(new_dag_list))
 
+
+for i, temp in enumerate(new_temp_list):
+    if i > 150 and i < 225:
+        print(temp)
+
 dager = []
 for i in range(len(new_temp_list)):
     dager.append(i+1)
