@@ -1,7 +1,6 @@
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
-import numpy as np
 import pylab
 
 xl_file = pd.ExcelFile("Data.xlsx")
@@ -50,15 +49,24 @@ for i in range(len(new_temp_list)):
     dager.append(i+1)
 
 k = 15
-glidende_avg = []
+glidende_avg_temp = []
+glidende_avg_sky = []
 for i in range(k, len(new_temp_list)-k):
-    glidende_avg.append(pylab.mean(new_temp_list[(i-k):(i+k)]))
+    glidende_avg_temp.append(pylab.mean(new_temp_list[(i-k):(i+k)]))
+    glidende_avg_sky.append(pylab.mean(new_skydekke_list[(i-k):(i+k)]))
+    
 
-xpoints = np.array(dager)
-ypoints = np.array(new_temp_list)
+fig, ax = plt.subplots()
 
-glidende_avg_x = xpoints[k:len(new_temp_list) - k]
 
-plt.plot(ypoints)
-plt.plot(glidende_avg_x, glidende_avg, "k")
+
+glidende_avg_x = dager[k:len(new_temp_list) - k]
+plt.subplots(figsize=(10, 7))
+plt.plot(new_temp_list, "b", label="Temperatur")
+plt.plot(glidende_avg_x, glidende_avg_temp, "k", label="Temperatur (glidende gjennomsnitt)")    
+plt.plot(glidende_avg_x, glidende_avg_sky, "r", label="Skydekke (glidende gjennomsnitt)")
+plt.xlabel("Dager")
+plt.ylabel("Temperatur (°C) / Skydekke (okta)")
+plt.grid(linestyle='-', linewidth=1, alpha=0.5)
+plt.legend()
 plt.show()
