@@ -31,6 +31,18 @@ for time, temp, sky, dato, måned in zip(time_list, temperature_list, skydekke_l
             new_måned_list.append(måned)
 
 
+
+dager = []
+for i in range(len(new_temp_list)):
+    dager.append(i+1)
+
+k = 15
+glidende_avg_temp = []
+glidende_avg_sky = []
+for i in range(k, len(new_temp_list)-k):
+    glidende_avg_temp.append(pylab.mean(new_temp_list[(i-k):(i+k)]))
+    glidende_avg_sky.append(pylab.mean(new_skydekke_list[(i-k):(i+k)]))
+
 print("Temp")
 
 for i, temp in enumerate(new_temp_list):
@@ -49,23 +61,7 @@ for i, sky in enumerate(new_skydekke_list):
     if i > 150 and i < 225:
         print(sky)
 
-
-
-dager = []
-for i in range(len(new_temp_list)):
-    dager.append(i+1)
-
-k = 15
-glidende_avg_temp = []
-glidende_avg_sky = []
-for i in range(k, len(new_temp_list)-k):
-    glidende_avg_temp.append(pylab.mean(new_temp_list[(i-k):(i+k)]))
-    glidende_avg_sky.append(pylab.mean(new_skydekke_list[(i-k):(i+k)]))
-    
-
 fig, ax = plt.subplots()
-
-
 
 glidende_avg_x = dager[k:len(new_temp_list) - k]
 plt.subplots(figsize=(10, 7))
