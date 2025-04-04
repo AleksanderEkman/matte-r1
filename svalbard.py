@@ -30,19 +30,6 @@ for time, temp, sky, dato, måned in zip(time_list, temperature_list, skydekke_l
             new_dag_list.append(dato)
             new_måned_list.append(måned)
 
-print("Time List:")
-print(new_time_list)
-print("Temperature List:")
-print(new_temp_list)
-print('Skydekke List:')
-print(new_skydekke_list)
-print('Dag List:')
-print(new_dag_list)
-print('Måned List:')
-print(new_måned_list)
-
-print(len(new_temp_list))
-print(len(new_dag_list))
 
 print("Temp")
 
