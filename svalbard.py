@@ -63,11 +63,6 @@ for i, sky in enumerate(new_skydekke_list):
         print(sky)
 
 
-
-dager = []
-for i in range(len(new_temp_list)):
-    dager.append(i+1)
-
 k = 15
 glidende_avg_temp = []
 glidende_avg_sky = []
